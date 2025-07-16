@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Insights - Seu Hub de Sistemas Operacionais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2BFt7yDjrDy4OgY7uH0PzNK+yZz+QyB4mE/iA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* REDEFINIÇÃO DAS VARIÁVEIS DE COR DO BOOTSTRAP */
+        /* Esta é a ÚNICA maneira de ter uma "nova coloração" global sem CSS externo/inline/interno extenso */
+        :root {
+            /* Cores de Tema do Bootstrap */
+            --bs-blue: #007bff; /* Mantém o azul padrão do Bootstrap */
+            --bs-indigo: #6610f2;
+            --bs-purple: #6f42cpc;
+            --bs-pink: #e83e8c;
+            --bs-red: #dc3545; /* Mantém o vermelho padrão */
+            --bs-orange: #fd7e14;
+            --bs-yellow: #ffc107;
+            --bs-green: #28a745; /* Mantém o verde padrão */
+            --bs-teal: #20c997;
+            --bs-cyan: #17a2b8;
+
+            /* Nova Paleta de Cores para o Site */
+            --bs-primary: #52006A;   /* Um roxo escuro/bordô para o primário (era azul) */
+            --bs-secondary: #6c757d; /* Cinza padrão */
+            --bs-success: #1A936F;   /* Um verde água/esmeralda (era verde mais vivo) */
+            --bs-info: #0087c9;      /* Um azul mais profundo (era ciano) */
+            --bs-warning: #ffbe0b;   /* Um amarelo/ouro (era laranja/amarelo) */
+            --bs-danger: #D62828;    /* Um vermelho mais intenso (era vermelho padrão) */
+            --bs-light: #f8f9fa;     /* Cinza claro padrão */
+            --bs-dark: #212529;      /* Quase preto padrão */
+            --bs-body-bg: #f5f5f5;   /* Fundo levemente cinza para o body */
+            --bs-body-color: #343a40; /* Cor de texto padrão mais escura */
+
+            /* Cores adicionais para gradientes ou detalhes, se quisermos mais tarde */
+            --bs-gradient-start: #7B1FA2; /* Um roxo um pouco mais claro para gradientes */
+            --bs-gradient-end: #300040;   /* Um roxo bem escuro para gradientes */
+        }
+
+        /* Ajustes menores para garantir que algumas classes se adaptem à nova paleta */
+        .navbar-brand, .nav-link {
+            font-weight: 700; /* Aumenta a espessura da fonte para o branding */
+        }
+        .nav-link:hover {
+            color: var(--bs-warning) !important; /* Cor de hover para links da nav */
+        }
+        .hero-section {
+            /* Usando as novas variáveis para o gradiente de fundo */
+            background: linear-gradient(45deg, var(--bs-gradient-start) 0%, var(--bs-gradient-end) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px; /* Efeito arredondado na base */
+            border-bottom-right-radius: 50px;
+        }
+        .hero-section::before {
+            /* Mantém o efeito de background, ajustando cores se necessário */
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="15" fill="rgba(255,255,255,0.1)" /><circle cx="75" cy="75" r="20" fill="rgba(255,255,255,0.1)" /><circle cx="10" cy="90" r="10" fill="rgba(255,255,255,0.1)" /><circle cx="90" cy="10" r="12" fill="rgba(255,255,255,0.1)" /></svg>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .carousel-caption {
+            background-color: rgba(0,0,0,0.6) !important; /* Ajuste da opacidade do background do caption */
+            border-radius: 0.75rem !important; /* Arredondamento dos captions */
+        }
+
+        /* Efeito de hover nos cards, usando utilitários de sombra */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; /* Sombra mais intensa no hover */
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Estilo para as imagens dos cards de SO */
+        .card-img-top-os-placeholder {
+            height: 120px; /* Altura fixa para as imagens dos cards */
+            object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+            padding: 20px;
+            background-color: var(--bs-light); /* Fundo suave para a área da imagem */
+            border-top-left-radius: calc(0.375rem - 1px); /* Mantém o arredondamento padrão do card */
+            border-top-right-radius: calc(0.375rem - 1px);
+        }
+        
+        /* Ajustes para modais */
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%); /* Torna o X do botão branco para fundos escuros */
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="fas fa-terminal me-2"></i>OS Insights
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="windows.html">Windows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="macos.html">macOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="linux.html">Linux</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="comparativo.html">Comparativo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Outros OS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bg-primary text-white text-center py-5" style="margin-top: 72px;">
+            <div class="container py-5">
+                <div id="osCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#osCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#osCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#osCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner rounded shadow-lg">
+                        <div class="carousel-item active">
+                            <img src="https://via.placeholder.com/1200x400/0d6efd/FFFFFF?text=Windows+11+-+Modernidade" class="d-block w-100" alt="Windows 11">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+                                <h5 class="fw-bold">Windows 11: Modernidade e Produtividade</h5>
+                                <p>Descubra as novidades da última versão do sistema operacional mais usado do mundo.</p>
+                                <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal" data-bs-target="#windowsModal">
+                                    Saiba Mais
+                                </button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/1200x400/198754/FFFFFF?text=macOS+Sonoma+-+Elegancia" class="d-block w-100" alt="macOS Sonoma">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+                                <h5 class="fw-bold">macOS Sonoma: Elegância e Desempenho</h5>
+                                <p>Conheça o ecossistema Apple e suas funcionalidades exclusivas.</p>
+                                <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal" data-bs-target="#macOSModal">
+                                    Saiba Mais
+                                </button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="linux-logo-72ceef.png" class="d-block w-100" alt="Linux">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
+                                <h5 class="fw-bold">Linux: Liberdade e Inovação</h5>
+                                <p>Explore o mundo do código aberto e suas diversas distribuições.</p>
+                                <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal" data-bs-target="#linuxModal">
+                                    Saiba Mais
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#osCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#osCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white py-5 shadow-sm">
+            <div class="container text-center py-4">
+                <h2 class="mb-4 fw-bold text-dark">Entendendo os Sistemas Operacionais</h2>
+                <p class="lead mb-4 text-muted">
+                    Um sistema operacional (SO) é o software mais importante de um computador. Ele gerencia o hardware e o software, permitindo que você use programas e acesse arquivos. Pense nele como o cérebro do seu computador, coordenando todas as operações.
+                </p>
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-4">
+                        <i class="fas fa-cogs fa-3x mb-3 text-primary"></i>
+                        <h4 class="fw-bold text-dark">Interface do Usuário</h4>
+                        <p class="text-secondary">Responsável por como você interage com o computador (gráfica ou por linha de comando).</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <i class="fas fa-memory fa-3x mb-3 text-primary"></i>
+                        <h4 class="fw-bold text-dark">Gerenciamento de Memória</h4>
+                        <p class="text-secondary">Aloca e libera memória para programas e dados, garantindo eficiência.</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <i class="fas fa-hdd fa-3x mb-3 text-primary"></i>
+                        <h4 class="fw-bold text-dark">Sistema de Arquivos</h4>
+                        <p class="text-secondary">Organiza, armazena e recupera arquivos no disco rígido de forma lógica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container my-5">
+            <h2 class="text-center mb-5 fw-bold text-dark">Sistemas Operacionais em Destaque</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <img src="https://via.placeholder.com/150x120/0d6efd/FFFFFF?text=Windows" class="card-img-top p-4 bg-primary bg-opacity-10 rounded-top-3" alt="Logo Windows">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">Windows</h5>
+                            <p class="card-text text-secondary">O sistema operacional mais popular do mundo, com uma vasta gama de softwares e jogos.</p>
+                            <a href="windows.html" class="btn btn-primary mt-2">Ver Mais Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <img src="https://via.placeholder.com/150x120/198754/FFFFFF?text=macOS" class="card-img-top p-4 bg-success bg-opacity-10 rounded-top-3" alt="Logo macOS">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">macOS</h5>
+                            <p class="card-text text-secondary">Elegância e desempenho se unem no sistema operacional da Apple, ideal para criadores.</p>
+                            <a href="macos.html" class="btn btn-success mt-2">Ver Mais Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <img src="https://via.placeholder.com/150x120/dc3545/FFFFFF?text=Linux" class="card-img-top p-4 bg-danger bg-opacity-10 rounded-top-3" alt="Logo Linux">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">Linux</h5>
+                            <p class="card-text text-secondary">A liberdade do código aberto: flexível, seguro e com inúmeras distribuições para todos os gostos.</p>
+                            <a href="linux.html" class="btn btn-danger mt-2">Ver Mais Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container my-5">
+            <h2 class="text-center mb-5 fw-bold text-dark">Últimos Artigos</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-dark">Novidades no Kernel Linux 6.9</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><small>10 de Julho, 2025</small></h6>
+                            <p class="card-text text-secondary">Um mergulho nas principais melhorias e novos recursos do kernel mais recente.</p>
+                            <a href="#" class="btn btn-outline-secondary btn-sm mt-2">Ler Mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-dark">Guia Completo para Migrar do Windows para o Ubuntu</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><small>05 de Julho, 2025</small></h6>
+                            <p class="card-text text-secondary">Passo a passo para uma transição suave e sem dores de cabeça para o Ubuntu.</p>
+                            <a href="#" class="btn btn-outline-secondary btn-sm mt-2">Ler Mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-dark">Segurança no macOS: Dicas Essenciais</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><small>01 de Julho, 2025</small></h6>
+                            <p class="card-text text-secondary">Mantenha seu Mac seguro com estas práticas recomendadas para proteger seus dados.</p>
+                            <a href="#" class="btn btn-outline-secondary btn-sm mt-2">Ler Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-dark text-white py-5">
+            <div class="container text-center py-4">
+                <h2 class="mb-4 fw-bold text-info">Receba Nossas Novidades por Email!</h2>
+                <p class="lead mb-4">Inscreva-se para não perder os últimos artigos e atualizações sobre sistemas operacionais.</p>
+                <form class="row justify-content-center g-3">
+                    <div class="col-md-5">
+                        <input type="text" class="form-control form-control-lg rounded-pill" id="nomeNewsletter" placeholder="Seu Nome (opcional)">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="email" class="form-control form-control-lg rounded-pill" id="emailNewsletter" placeholder="Seu Email" required>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-info btn-lg w-100 rounded-pill">Inscrever-se</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 OS Insights. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-info text-decoration-none me-3">Política de Privacidade</a>
+                    <a href="#" class="text-info text-decoration-none me-3">Termos de Uso</a>
+                    <a href="#" class="text-info text-decoration-none"><i class="fab fa-twitter me-2"></i></a>
+                    <a href="#" class="text-info text-decoration-none"><i class="fab fa-linkedin me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="windowsModal" tabindex="-1" aria-labelledby="windowsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="windowsModalLabel"><i class="fab fa-windows me-2"></i>Detalhes sobre Windows</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    <p class="lead">O Windows é o sistema operacional mais difundido globalmente, conhecido por sua interface gráfica intuitiva (GUI) e sua vasta compatibilidade com hardware e software.</p>
+                    <p>Ideal para a maioria dos usuários, desde uso doméstico e jogos até ambientes corporativos. Suas principais características incluem:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-gamepad me-2 text-primary"></i> **Compatibilidade:** Suporte incomparável a softwares e jogos.</li>
+                        <li class="list-group-item"><i class="fas fa-palette me-2 text-primary"></i> **Interface Amigável:** Fácil de aprender e usar, com o familiar Menu Iniciar e Barra de Tarefas.</li>
+                        <li class="list-group-item"><i class="fas fa-tools me-2 text-primary"></i> **Hardware Diversificado:** Funciona em uma vasta gama de configurações de hardware e fabricantes.</li>
+                    </ul>
+                    <p>Apesar de sua popularidade, exige mais atenção à segurança e pode ter custos de licença. A versão mais recente é o **Windows 11**.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="windows.html" class="btn btn-primary">Ver Página Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="macOSModal" tabindex="-1" aria-labelledby="macOSModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="macOSModalLabel"><i class="fab fa-apple me-2"></i>Detalhes sobre macOS</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    <p class="lead">O macOS é o sistema operacional da Apple, conhecido por seu design elegante, alta performance e integração impecável com o ecossistema de dispositivos Apple.</p>
+                    <p>É uma escolha popular entre profissionais criativos (design, vídeo, áudio) e usuários que valorizam uma experiência de usuário premium e segura. Suas principais características são:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-magic me-2 text-success"></i> **Design e Usabilidade:** Interface polida e intuitiva, com foco na experiência do usuário.</li>
+                        <li class="list-group-item"><i class="fas fa-shield-alt me-2 text-success"></i> **Segurança Aprimorada:** Geralmente menos suscetível a vírus e malwares.</li>
+                        <li class="list-group-item"><i class="fas fa-mobile-alt me-2 text-success"></i> **Ecossistema Apple:** Sincronização perfeita com iPhone, iPad, Apple Watch e outros dispositivos.</li>
+                    </ul>
+                    <p>Apesar de seu alto custo de entrada (apenas em hardware Apple), oferece um excelente desempenho e estabilidade. A versão mais recente é o **macOS Sonoma**.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="macos.html" class="btn btn-success">Ver Página Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="linuxModal" tabindex="-1" aria-labelledby="linuxModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="linuxModalLabel"><i class="fab fa-linux me-2"></i>Detalhes sobre Linux</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    <p class="lead">Linux é um kernel de sistema operacional de código aberto e gratuito, que serve de base para inúmeras "distribuições" (distros) completas como Ubuntu, Fedora e Mint. É sinônimo de liberdade, flexibilidade e segurança.</p>
+                    <p>Ideal para desenvolvedores, sysadmins e usuários que buscam controle total sobre o sistema e uma plataforma robusta e personalizável. Suas principais vantagens incluem:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-dollar-sign me-2 text-danger"></i> **Gratuito e Aberto:** Sem custos de licença e com código-fonte acessível para modificação.</li>
+                        <li class="list-group-item"><i class="fas fa-lock me-2 text-danger"></i> **Segurança e Estabilidade:** Menos vulnerável a ataques e conhecido por sua resiliência.</li>
+                        <li class="list-group-item"><i class="fas fa-code-branch me-2 text-danger"></i> **Flexibilidade e Personalização:** Inúmeras opções de ambientes gráficos e softwares.</li>
+                    </ul>
+                    <p>Apesar de ter uma curva de aprendizado para iniciantes, o Linux oferece uma comunidade de suporte vasta e ativa. Existem milhares de distribuições para diferentes propósitos.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="linux.html" class="btn btn-danger">Ver Página Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
