@@ -14,3 +14,11 @@ img{
     object-fit: contain;
 }
 
+.card{
+    transition: transform 0.3s ease;
+}
+
+.card:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}

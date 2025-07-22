@@ -66,16 +66,19 @@
                                 <h5 class="fw-bold">Windows: Modernidade e Produtividade</h5>
                                 <p>Explore o Windows e suas infinitas possibilidades para produtividade, jogos e
                                     desenvolvimento.</p>
-                                <button type="button" class="btn btn-outline-light mt-3">Saiba mais</button>
+                                <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal"
+                                    data-bs-target="#windowsModal">Saiba mais</button>
                             </div>
                         </div>
-                        <div class="carousel-item" data-bs-interval="1800">
+                        <div class=" carousel-item" data-bs-interval="1800">
                             <img src="./imgs/macos.png" class="d-block w-100" alt="macOS-logo" title="macOS-logo">
                             <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
                                 <h5 class="fw-bold">macOS: Elegância e Desempenho</h5>
-                                <p>Mergulhe na experiência macOS, com sua interface refinada e desempenho consistente.
+                                <p>Mergulhe na experiência macOS, com sua interface refinada e desempenho
+                                    consistente.
                                 </p>
-                                <button type="button" class="btn btn-outline-light mt-3">Saiba mais</button>
+                                <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal"
+                                    data-bs-target="#macOSModal">Saiba mais</button>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -83,7 +86,8 @@
                             <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
                                 <h5 class="fw-bold">Linux: Liberdade e Inovação</h5>
                                 <p>Explore o mundo do código aberto e suas diversas distribuições.</p>
-                                <button type="button" class="btn btn-outline-light mt-3">Saiba mais</button>
+                                <button type="button" class="btn btn-outline-light mt-3" data-bs-toggle="modal"
+                                    data-bs-target="#linuxModal">Saiba mais</button>
                             </div>
                         </div>
                     </div>
@@ -195,6 +199,106 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal fade" id="windowsModal" tabindex="-1" aria-labelledby="windowsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="windowsModalLabel"><i class="fab fa-windows me-2"></i>Detalhes sobre
+                        Windows</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    <p class="lead">O Windows é o sistema operacional mais difundido globalmente, conhecido por sua
+                        interface gráfica intuitiva (GUI) e sua vasta compatibilidade com hardware e software.</p>
+                    <p>Ideal para a maioria dos usuários, desde uso doméstico e jogos até ambientes corporativos. Suas
+                        principais características incluem:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-gamepad me-2 text-primary"></i>
+                            **Compatibilidade:** Suporte incomparável a softwares e jogos.</li>
+                        <li class="list-group-item"><i class="fas fa-palette me-2 text-primary"></i> **Interface
+                            Amigável:** Fácil de aprender e usar, com o familiar Menu Iniciar e Barra de Tarefas.</li>
+                        <li class="list-group-item"><i class="fas fa-tools me-2 text-primary"></i> **Hardware
+                            Diversificado:** Funciona em uma vasta gama de configurações de hardware e fabricantes.</li>
+                    </ul>
+                    <p>Apesar de sua popularidade, exige mais atenção à segurança e pode ter custos de licença. A versão
+                        mais recente é o **Windows 11**.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="windows.html" class="btn btn-primary">Ver Página Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="macOSModal" tabindex="-1" aria-labelledby="macOSModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="macOSModalLabel"><i class="fab fa-apple me-2"></i>Detalhes sobre macOS
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    <p class="lead">O macOS é o sistema operacional da Apple, conhecido por seu design elegante, alta
+                        performance e integração impecável com o ecossistema de dispositivos Apple.</p>
+                    <p>É uma escolha popular entre profissionais criativos (design, vídeo, áudio) e usuários que
+                        valorizam uma experiência de usuário premium e segura. Suas principais características são:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-magic me-2 text-success"></i> **Design e
+                            Usabilidade:** Interface polida e intuitiva, com foco na experiência do usuário.</li>
+                        <li class="list-group-item"><i class="fas fa-shield-alt me-2 text-success"></i> **Segurança
+                            Aprimorada:** Geralmente menos suscetível a vírus e malwares.</li>
+                        <li class="list-group-item"><i class="fas fa-mobile-alt me-2 text-success"></i> **Ecossistema
+                            Apple:** Sincronização perfeita com iPhone, iPad, Apple Watch e outros dispositivos.</li>
+                    </ul>
+                    <p>Apesar de seu alto custo de entrada (apenas em hardware Apple), oferece um excelente desempenho e
+                        estabilidade. A versão mais recente é o **macOS Sonoma**.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="macos.html" class="btn btn-primary">Ver Página Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="linuxModal" tabindex="-1" aria-labelledby="linuxModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="linuxModalLabel"><i class="fab fa-linux me-2"></i>Detalhes sobre Linux
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    <p class="lead">Linux é um kernel de sistema operacional de código aberto e gratuito, que serve de
+                        base para inúmeras "distribuições" (distros) completas como Ubuntu, Fedora e Mint. É sinônimo de
+                        liberdade, flexibilidade e segurança.</p>
+                    <p>Ideal para desenvolvedores, sysadmins e usuários que buscam controle total sobre o sistema e uma
+                        plataforma robusta e personalizável. Suas principais vantagens incluem:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><i class="fas fa-dollar-sign me-2 text-danger"></i> **Gratuito e
+                            Aberto:** Sem custos de licença e com código-fonte acessível para modificação.</li>
+                        <li class="list-group-item"><i class="fas fa-lock me-2 text-danger"></i> **Segurança e
+                            Estabilidade:** Menos vulnerável a ataques e conhecido por sua resiliência.</li>
+                        <li class="list-group-item"><i class="fas fa-code-branch me-2 text-danger"></i> **Flexibilidade
+                            e Personalização:** Inúmeras opções de ambientes gráficos e softwares.</li>
+                    </ul>
+                    <p>Apesar de ter uma curva de aprendizado para iniciantes, o Linux oferece uma comunidade de suporte
+                        vasta e ativa. Existem milhares de distribuições para diferentes propósitos.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="linux.html" class="btn btn-primary">Ver Página Completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
