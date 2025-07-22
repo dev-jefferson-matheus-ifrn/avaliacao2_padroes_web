@@ -11,33 +11,41 @@
 </head>
 
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">OS insights</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Windows</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Linux</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Mac</a>
-          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Comparativo</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</header>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">OS insights</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Windows</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Linux</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Mac</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Comparativo</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
         <section class="bg-primary">
@@ -56,7 +64,8 @@
                             <img src="./imgs/windows.png" class="d-block w-100" alt="windows-logo" title="windows-logo">
                             <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
                                 <h5 class="fw-bold">Windows: Modernidade e Produtividade</h5>
-                                <p>Explore o Windows e suas infinitas possibilidades para produtividade, jogos e desenvolvimento.</p>
+                                <p>Explore o Windows e suas infinitas possibilidades para produtividade, jogos e
+                                    desenvolvimento.</p>
                                 <button type="button" class="btn btn-outline-light mt-3">Saiba mais</button>
                             </div>
                         </div>
@@ -64,7 +73,8 @@
                             <img src="./imgs/macos.png" class="d-block w-100" alt="macOS-logo" title="macOS-logo">
                             <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
                                 <h5 class="fw-bold">macOS: Elegância e Desempenho</h5>
-                                <p>Mergulhe na experiência macOS, com sua interface refinada e desempenho consistente.</p>
+                                <p>Mergulhe na experiência macOS, com sua interface refinada e desempenho consistente.
+                                </p>
                                 <button type="button" class="btn btn-outline-light mt-3">Saiba mais</button>
                             </div>
                         </div>
@@ -90,7 +100,101 @@
                 </div>
             </div>
         </section>
+
+        <section class="bg-white py-5 shadow-sm">
+            <div class="container text-center py-4">
+                <h2 class="mb-4 fw-bold text-dark">Entendendo os Sistemas Operacionais</h2>
+                <p class="lead mb-4 text-muted">
+                    Um sistema operacional (SO) é o software mais importante de um computador. Ele gerencia o hardware e
+                    o software, permitindo que você use programas e acesse arquivos. Pense nele como o cérebro do seu
+                    computador, coordenando todas as operações.
+                </p>
+
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-4">
+                        <h4 class="fw-bold text-dark">Interface do Usuário</h4>
+                        <p class="text-secondary">Responsável por como você interage com o computador (gráfica ou por
+                            linha de comando).</p>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <h4 class="fw-bold text-dark">Gerenciamento de Memória</h4>
+                        <p class="text-secondary">Aloca e libera memória para programas e dados, garantindo eficiência.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <h4 class="fw-bold text-dark">Sistema de Arquivos</h4>
+                        <p class="text-secondary">Organiza, armazena e recupera arquivos no disco rígido de forma
+                            lógica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container my-5">
+            <h2 class="text-center mb-5 fw-bold text-dark">Sistemas Operacionais em Destaque</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-45 shadow-sm border-0 rounded-3">
+                        <img src="./imgs/windows.png" class="card-img-top p-4 bg-primary bg-opacity-10 rounded-top-3"
+                            alt="Logo Windows">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">Windows</h5>
+                            <p class="card-text text-secondary">O sistema operacional mais popular do mundo, com uma
+                                vasta gama de softwares e jogos.</p>
+                            <a href="#" class="btn btn-primary mt-2">Ver Mais Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-45 shadow-sm border-0 rounded-3">
+                        <img src="./imgs/macos.png" class="card-img-top p-4 bg-primary bg-opacity-10 rounded-top-3"
+                            alt="Logo macOS">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">MacOS</h5>
+                            <p class="card-text text-secondary">Elegância e desempenho se unem no sistema operacional da
+                                Apple, ideal para criadores.</p>
+                            <a href="#" class="btn btn-primary mt-2">Ver Mais Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-45 shadow-sm border-0 rounded-3">
+                        <img src="./imgs/linux.png" class="card-img-top p-4 bg-primary bg-opacity-10 rounded-top-3"
+                            alt="Logo macOS">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">Linux</h5>
+                            <p class="card-text text-secondary">A liberdade do código aberto: flexível, seguro e com
+                                inúmeras distribuições para todos os gostos.</p>
+                            <a href="#" class="btn btn-primary mt-2">Ver Mais Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 OS Insights. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-info text-decoration-none me-3">Política de Privacidade</a>
+                    <a href="#" class="text-info text-decoration-none me-3">Termos de Uso</a>
+                    <a href="#" class="text-info text-decoration-none"><i class="fab fa-twitter me-2"></i></a>
+                    <a href="#" class="text-info text-decoration-none"><i class="fab fa-linkedin me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"

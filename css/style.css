@@ -9,3 +9,8 @@ img{
     object-fit: contain;
 }
 
+.card-img-top{
+    height: 120px;
+    object-fit: contain;
+}
+
