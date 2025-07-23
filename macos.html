@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacOS - OS insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <style>
+        .macos-img {
+            height: 300px;
+            object-fit: contain;
+        }
+
+        .card-img-top {
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .card-logo {
+            transition: transform 0.3s ease;
+        }
+
+        .card-logo:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">OS insights</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="windows.html">Windows</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="linux.html">Linux</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="macos.html">Mac</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Comparativo</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-5">
+        <div class="container">
+            <h1 class="text-center my-5 fw-bold text-primary">Apple macOS</h1>
+
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6">
+                    <img src="./imgs/macos.png" class="img-fluid macos-img" alt="Desktop Windows">
+                </div>
+                <div class="col-md-6">
+                    <p class="lead text-secondary mt-3 mt-md-0 fw-bold">
+                        O macOS é o sistema operacional desenvolvido pela Apple Inc. para seus computadores Mac.
+                        Conhecido por sua interface de usuário intuitiva e elegante, e por sua integração profunda com o
+                        ecossistema Apple.
+                    </p>
+                    <p class="text-muted fw-bold">
+                        Desde suas raízes no NeXTSTEP e o lançamento do Mac OS X em 2001, o macOS se estabeleceu como
+                        uma escolha premium para profissionais criativos e usuários que buscam uma experiência de
+                        computação fluida e segura. As atualizações anuais, como o recente macOS Sonoma, introduzem
+                        novas funcionalidades e aprimoram a performance.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-center mb-4 fw-bold text-dark">Vantagens e Desvantagens</h3>
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <div class="card h-100 bg-light border-success border-3 shadow-sm rounded-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-success fw-bold"><i
+                                    class="fas fa-check-circle me-2"></i>Vantagens</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-gamepad me-2 text-muted"></i>Design elegante e experiência de
+                                    usuário fluida.</li>
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-cogs me-2 text-muted"></i>Considerado mais seguro contra malwares.
+                                </li>
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-users me-2 text-muted"></i>Integração perfeita com iPhone, iPad,
+                                    etc.
+                                </li>
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-tools me-2 text-muted"></i>Excelente para produção de mídia e
+                                    design.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="card h-100 bg-light border-danger border-3 shadow-sm rounded-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger fw-bold"><i
+                                    class="fas fa-times-circle me-2"></i>Desvantagens</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-bug me-2 text-muted"></i>Custo elevado de hardware (Macs).</li>
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-dollar-sign me-2 text-muted"></i>Menor variedade de jogos e alguns
+                                    softwares específicos.</li>
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-server me-2 text-muted"></i>Menor capacidade de personalização de
+                                    hardware.
+                                </li>
+                                <li class="list-group-item bg-light text-secondary"><i
+                                        class="fas fa-lock me-2 text-muted"></i>Dependência do ecossistema Apple.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center mb-4 fw-bold text-dark">Versões Recentes</h3>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3 card-logo">
+                        <img src="./imgs/MacOS_Monterey_logo.png" class="card-img-top p-3 bg-primary bg-opacity-10 rounded-top-3"
+                            alt="Windows XP">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">macOS Monterey</h5>
+                            <p class="card-text text-secondary">Foco em produtividade e continuidade, lançado em 2021.
+                            </p>
+                            <a href="https://en.wikipedia.org/wiki/MacOS_Monterey"
+                                class="btn bg-primary mt-2 fw-bold text-white" target="_blank">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3 card-logo">
+                        <img src="./imgs/macos-ventura-logo.png" class="card-img-top p-3 bg-primary bg-opacity-10 rounded-top-3"
+                            alt="Windows 7">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">macOS Ventura</h5>
+                            <p class="card-text text-secondary">Stage Manager e Continuity Camera, lançado em 2022.</p>
+                            <a href="https://en.wikipedia.org/wiki/MacOS_Ventura"
+                                class="btn bg-primary mt-2 fw-bold text-white" target="_blank">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3 card-logo">
+                        <img src="./imgs/MacOS_Sonoma_logo.png" class="card-img-top p-3 bg-primary bg-opacity-10 rounded-top-3"
+                            alt="Windows 10">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">macOS Sonoma</h5>
+                            <p class="card-text text-secondary">Widgets na área de trabalho e novos recursos para jogos, 2023.
+                            </p>
+                            <a href="https://en.wikipedia.org/wiki/MacOS_Sonoma"
+                                class="btn bg-primary mt-2 fw-bold text-white" target="_blank">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 OS Insights. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-info text-decoration-none me-3">Política de Privacidade</a>
+                    <a href="#" class="text-info text-decoration-none me-3">Termos de Uso</a>
+                    <a href="#" class="text-info text-decoration-none"><i class="fab fa-twitter me-2"></i></a>
+                    <a href="#" class="text-info text-decoration-none"><i class="fab fa-linkedin me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
